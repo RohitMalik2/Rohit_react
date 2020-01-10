@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
 import Radium, {StyleRoot} from 'radium';
-import ErrorBoundaryComponent from './ErrorBoundary/ErrorBoundaryComponent';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundaryComponent';
 
 class App extends Component {
 

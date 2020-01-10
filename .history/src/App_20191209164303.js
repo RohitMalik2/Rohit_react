@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
 import Radium, {StyleRoot} from 'radium';
-import ErrorBoundaryComponent from './ErrorBoundary/ErrorBoundaryComponent';
 
 class App extends Component {
 
@@ -59,11 +58,12 @@ class App extends Component {
         <div>
           {/* iterating through a list of items */}
           {this.state.persons.map((person, index) => {
-            return <ErrorBoundaryComponent key={person.id}><Person
+            return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              changed={(event) => this.nameChangedHandler(event, person.id)} /></ErrorBoundaryComponent>;
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />;
           })
           }
         </div>

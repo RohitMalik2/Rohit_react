@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
-import Radium, {StyleRoot} from 'radium';
-import ErrorBoundaryComponent from './ErrorBoundary/ErrorBoundaryComponent';
+import Radium from 'radium';
 
 class App extends Component {
 
@@ -59,40 +58,35 @@ class App extends Component {
         <div>
           {/* iterating through a list of items */}
           {this.state.persons.map((person, index) => {
-            return <ErrorBoundaryComponent key={person.id}><Person
+            return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              changed={(event) => this.nameChangedHandler(event, person.id)} /></ErrorBoundaryComponent>;
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />;
           })
           }
         </div>
       );
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'lightred',
-        color: 'black'
-      }
     }
 
     // Adding classes dynamically
     const classes = [];
-    if (this.state.persons.length <= 3) {
+    if(this.state.persons.length <= 3) {
       classes.push('red');
     }
-    if (this.state.persons.length <= 1) {
+    if(this.state.persons.length <= 1) {
       classes.push('bold');
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hi, iam react App!!</h1>
-          <p className={classes.join(' ')}>This is really working!!</p>
-          <button style={style} onClick={this.togglePersonsHandler}>toggle persons</button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>Hi, iam react App!!</h1>
+        <p className={classes.join(' ')}>This is really working!!</p>
+        <button style={style} onClick={this.togglePersonsHandler}>toggle persons</button>
+        {persons}
+      </div>
     );
   };
 
